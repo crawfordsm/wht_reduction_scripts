@@ -22,11 +22,11 @@ The specreduce does depend on [PyQt4](https://riverbankcomputing.com/software/py
 ## Instructions
 
 To perform basic data reductions, follow these steps:
-# Run the basic reductions on the data.   Provide the full path to the directory with the raw data and to the directory where the product data should be produced.  These should not be the same directory.
+1. Run the basic reductions on the data.   Provide the full path to the directory with the raw data and to the directory where the product data should be produced.  These should not be the same directory.
     python wht_basic_reductions.py [full_path_to_raw_data] [full_path_to_reduced_data]
 
-# Create wave maps for each of the arc frames
+2. Create wave maps for each of the arc frames
 
-# Apply the wavemaps to object frames
+3.  Apply the wavemaps to object frames
 
 
