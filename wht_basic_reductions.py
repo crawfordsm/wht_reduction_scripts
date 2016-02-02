@@ -67,7 +67,7 @@ for filename in ic1.files_filtered(obstype='Flat', isiarm='Blue arm'):
     ccd = ccdproc.subtract_overscan(ccd, master_bias_blue)
     blue_flat_list.append(ccd)
 master_flat_blue = ccdproc.combine(blue_flat_list, method='median')
-master_flat_blue.write('master_flat_red.fits', clobber=True)
+master_flat_blue.write('master_flat_blue.fits', clobber=True)
 
 #reduce the arc frames
 for filename in ic1.files_filtered(obstype='Arc', isiarm='Blue arm'):
