@@ -53,7 +53,7 @@ for filename in ic1.files_filtered(obstype='Flat', isiarm='Red arm'):
     #this has to be fixed as the bias section does not include the whole section that will be trimmed
     ccd = ccdproc.subtract_overscan(ccd, median=True,  overscan_axis=0, fits_section='[1:966,4105:4190]')
     ccd = ccdproc.trim_image(ccd, fits_section=ccd.header['TRIMSEC'] )
-    ccd = ccdproc.subtract_overscan(ccd, master_bias_red)
+    ccd = ccdproc.subtract_bias(ccd, master_bias_red)
     red_flat_list.append(ccd)
 master_flat_red = ccdproc.combine(red_flat_list, method='median')
 master_flat_red.write('master_flat_red.fits', clobber=True)
@@ -64,7 +64,7 @@ for filename in ic1.files_filtered(obstype='Flat', isiarm='Blue arm'):
     #this has to be fixed as the bias section does not include the whole section that will be trimmed
     ccd = ccdproc.subtract_overscan(ccd, median=True,  overscan_axis=0, fits_section='[1:966,4105:4190]')
     ccd = ccdproc.trim_image(ccd, fits_section=ccd.header['TRIMSEC'] )
-    ccd = ccdproc.subtract_overscan(ccd, master_bias_blue)
+    ccd = ccdproc.subtract_bias(ccd, master_bias_blue)
     blue_flat_list.append(ccd)
 master_flat_blue = ccdproc.combine(blue_flat_list, method='median')
 master_flat_blue.write('master_flat_blue.fits', clobber=True)
@@ -76,7 +76,7 @@ for filename in ic1.files_filtered(obstype='Arc', isiarm='Blue arm'):
     #this has to be fixed as the bias section does not include the whole section that will be trimmed
     ccd = ccdproc.subtract_overscan(ccd, median=True,  overscan_axis=0, fits_section='[1:966,4105:4190]')
     ccd = ccdproc.trim_image(ccd, fits_section=ccd.header['TRIMSEC'] )
-    ccd = ccdproc.subtract_overscan(ccd, master_bias_blue)
+    ccd = ccdproc.subtract_bias(ccd, master_bias_blue)
     ccd = ccdproc.flat_correct(ccd, master_flat_blue)
     ccd.data = ccd.data.T
     ccd.write('arc_'+filename, clobber=True)
@@ -88,7 +88,7 @@ for filename in ic1.files_filtered(obstype='Arc', isiarm='Red arm'):
     #this has to be fixed as the bias section does not include the whole section that will be trimmed
     ccd = ccdproc.subtract_overscan(ccd, median=True,  overscan_axis=0, fits_section='[1:966,4105:4190]')
     ccd = ccdproc.trim_image(ccd, fits_section=ccd.header['TRIMSEC'] )
-    ccd = ccdproc.subtract_overscan(ccd, master_bias_red)
+    ccd = ccdproc.subtract_bias(ccd, master_bias_red)
     ccd = ccdproc.flat_correct(ccd, master_flat_red)
     ccd.data = ccd.data.T
     ccd.write('arc_'+filename, clobber=True)
@@ -100,7 +100,7 @@ for filename in ic1.files_filtered(obstype='Sky', isiarm='Blue arm'):
     #this has to be fixed as the bias section does not include the whole section that will be trimmed
     ccd = ccdproc.subtract_overscan(ccd, median=True,  overscan_axis=0, fits_section='[1:966,4105:4190]')
     ccd = ccdproc.trim_image(ccd, fits_section=ccd.header['TRIMSEC'] )
-    ccd = ccdproc.subtract_overscan(ccd, master_bias_blue)
+    ccd = ccdproc.subtract_bias(ccd, master_bias_blue)
     ccd = ccdproc.flat_correct(ccd, master_flat_blue)
     ccd.data = ccd.data.T
     ccd.write('sky_'+filename, clobber=True)
@@ -111,7 +111,7 @@ for filename in ic1.files_filtered(obstype='Sky', isiarm='Red arm'):
     #this has to be fixed as the bias section does not include the whole section that will be trimmed
     ccd = ccdproc.subtract_overscan(ccd, median=True,  overscan_axis=0, fits_section='[1:966,4105:4190]')
     ccd = ccdproc.trim_image(ccd, fits_section=ccd.header['TRIMSEC'] )
-    ccd = ccdproc.subtract_overscan(ccd, master_bias_red)
+    ccd = ccdproc.subtract_bias(ccd, master_bias_red)
     ccd = ccdproc.flat_correct(ccd, master_flat_red)
     ccd.data = ccd.data.T
     ccd.write('sky_'+filename, clobber=True)
@@ -123,7 +123,7 @@ for filename in ic1.files_filtered(obstype='TARGET', isiarm='Blue arm'):
     #this has to be fixed as the bias section does not include the whole section that will be trimmed
     ccd = ccdproc.subtract_overscan(ccd, median=True,  overscan_axis=0, fits_section='[1:966,4105:4190]')
     ccd = ccdproc.trim_image(ccd, fits_section=ccd.header['TRIMSEC'] )
-    ccd = ccdproc.subtract_overscan(ccd, master_bias_blue)
+    ccd = ccdproc.subtract_bias(ccd, master_bias_blue)
     ccd = ccdproc.flat_correct(ccd, master_flat_blue)
     ccd.data = ccd.data.T
     ccd.write('obj_'+filename, clobber=True)
@@ -134,7 +134,7 @@ for filename in ic1.files_filtered(obstype='Target', isiarm='Red arm'):
     #this has to be fixed as the bias section does not include the whole section that will be trimmed
     ccd = ccdproc.subtract_overscan(ccd, median=True,  overscan_axis=0, fits_section='[1:966,4105:4190]')
     ccd = ccdproc.trim_image(ccd, fits_section=ccd.header['TRIMSEC'] )
-    ccd = ccdproc.subtract_overscan(ccd, master_bias_red)
+    ccd = ccdproc.subtract_bias(ccd, master_bias_red)
     ccd = ccdproc.flat_correct(ccd, master_flat_red)
     ccd.data = ccd.data.T
     ccd.write('obj_'+filename, clobber=True)
