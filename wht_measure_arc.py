@@ -1,4 +1,4 @@
-import sys
+import os, sys
 import numpy as np
 import argparse
 
@@ -116,7 +116,7 @@ ws = WavelengthSolution.WavelengthSolution(xarr, warr.value, ws_init)
 ws.fit()
 
 istart = data.shape[0]/2.0
-smask = (slines > warr.value.min()-10) * (slines < warr.value.max()+10)
+smask = (slines > warr.value.min()-20) * (slines < warr.value.max()+20)
 iws = InterIdentify(xarr, data, slines[smask], sfluxes[smask], ws, mdiff=mdiff, rstep=rstep,
               function=function, order=order, sigma=thresh, niter=niter, wdiff=wdiff,
               res=res, dres=dres, dc=dc, ndstep=ndstep, istart=istart,
@@ -139,7 +139,7 @@ k = iws.keys()[0]
 for i in range(data.shape[0]):
     data[i,:] = iws[k](data[i,:])
 
-arc.append(fits.ImageHDU(data=wave_map, header=arc['SCI'].header, name='WAV'))
+arc.append(fits.ImageHDU(data=data, name='WAV'))
 arc.writeto('w_' + os.path.basename(arcfile), clobber=True)
 
 exit()
